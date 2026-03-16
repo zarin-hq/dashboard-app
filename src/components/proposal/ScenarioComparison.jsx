@@ -1,0 +1,40 @@
+import {
+  BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid,
+} from 'recharts'
+
+const DISCIPLINE_COLORS = {
+  design: '#9333ea',
+  frontend: '#2563eb',
+  backend: '#16a34a',
+  misc: '#c97a3a',
+}
+
+export default function ScenarioComparison({ scenarios }) {
+  const comparisonData = scenarios.map((s) => ({
+    name: s.name,
+    Design: s.hours.design,
+    Frontend: s.hours.frontend,
+    Backend: s.hours.backend,
+    Misc: s.hours.misc,
+  }))
+
+  return (
+    <div className="rounded-xl border border-tan bg-sand-light p-5 space-y-3">
+      <div className="h-52">
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart data={comparisonData} barSize={36}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#E4D5C3" />
+            <XAxis dataKey="name" tick={{ fontSize: 12, fill: '#7C8E8E' }} />
+            <YAxis tick={{ fontSize: 12, fill: '#7C8E8E' }} />
+            <Tooltip formatter={(v) => `${v}h`} />
+            <Legend wrapperStyle={{ fontSize: 12 }} />
+            <Bar dataKey="Design" stackId="a" fill={DISCIPLINE_COLORS.design} />
+            <Bar dataKey="Frontend" stackId="a" fill={DISCIPLINE_COLORS.frontend} />
+            <Bar dataKey="Backend" stackId="a" fill={DISCIPLINE_COLORS.backend} />
+            <Bar dataKey="Misc" stackId="a" fill={DISCIPLINE_COLORS.misc} />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+    </div>
+  )
+}

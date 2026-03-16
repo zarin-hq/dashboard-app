@@ -1,0 +1,181 @@
+import { useState, useMemo } from 'react'
+import { Link } from 'react-router-dom'
+import { useProject } from '../hooks/useProject'
+import useProposalScenarios from '../hooks/useProposalScenarios'
+import { buildSitemapFromPages, buildSitemapText, MODULE_CATEGORIES } from '../lib/proposalData'
+import ScenarioComparison from '../components/proposal/ScenarioComparison'
+import ScenarioEstimate from '../components/proposal/ScenarioEstimate'
+import Sitemap from '../components/proposal/Sitemap'
+import ScreensBreakdown from '../components/proposal/ScreensBreakdown'
+import Timeline from '../components/proposal/Timeline'
+
+const MODULE_OPTIONS = [{ id: 'all', name: 'All' }, ...MODULE_CATEGORIES]
+
+function FilterButtonGroup({ options, activeId, onChange }) {
+  return (
+    <div className="inline-flex rounded-lg border border-tan bg-sand-dark p-1 gap-1">
+      {options.map((opt) => (
+        <button
+          key={opt.id}
+          onClick={() => onChange(opt.id)}
+          className={`px-5 py-2 rounded-md text-sm font-semibold transition-colors ${
+            activeId === opt.id
+              ? 'bg-white text-deep shadow-sm'
+              : 'text-deep-muted hover:text-deep'
+          }`}
+        >
+          {opt.name}
+        </button>
+      ))}
+    </div>
+  )
+}
+
+function CollapsibleSection({ title, defaultOpen = true, children }) {
+  const [open, setOpen] = useState(defaultOpen)
+  return (
+    <section>
+      <button
+        onClick={() => setOpen((o) => !o)}
+        className="flex items-center gap-2 w-full text-left group mb-4"
+      >
+        <svg
+          className={`w-4 h-4 text-deep-muted transition-transform ${open ? 'rotate-90' : ''}`}
+          viewBox="0 0 16 16"
+          fill="currentColor"
+        >
+          <path d="M6 3l5 5-5 5V3z" />
+        </svg>
+        <h2 className="text-xl font-bold text-deep group-hover:text-deep transition-colors">
+          {title}
+        </h2>
+      </button>
+      {open && children}
+    </section>
+  )
+}
+
+export default function Proposal() {
+  const { state } = useProject()
+  const [activeScenarioId, setActiveScenarioId] = useState('2026')
+  const [activeModuleId, setActiveModuleId] = useState('all')
+
+  const scenarios = useProposalScenarios(activeModuleId)
+  const activeScenario = scenarios.find((s) => s.id === activeScenarioId) || scenarios[0]
+
+  const sitemapRoot = useMemo(
+    () => buildSitemapFromPages(state.pages),
+    [state.pages]
+  )
+
+  const handleClickPage = (pageId) => {
+    const el = document.getElementById(pageId)
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
+  const handleDownloadSitemap = () => {
+    const text = buildSitemapText(sitemapRoot)
+    const blob = new Blob([text], { type: 'text/plain' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = 'sitemap.txt'
+    a.click()
+    URL.revokeObjectURL(url)
+  }
+
+  // Empty state
+  if (state.pages.length === 0 && state.screenshots.length === 0) {
+    return (
+      <div className="text-center py-16">
+        <p className="text-deep-muted mb-2">No project data yet.</p>
+        <p className="text-sm text-deep-muted">
+          Go to{' '}
+          <Link to="/" className="text-deep underline underline-offset-2">
+            Capture
+          </Link>{' '}
+          to upload a video and capture screenshots, then{' '}
+          <Link to="/estimate" className="text-deep underline underline-offset-2">
+            Estimate
+          </Link>{' '}
+          to annotate hours.
+        </p>
+      </div>
+    )
+  }
+
+  return (
+    <div className="space-y-10">
+      <CollapsibleSection title="Scenarios">
+        <div className="space-y-4">
+          <div className="space-y-3 text-sm text-deep-muted">
+            <p>
+              <strong className="text-deep">Launch in 2026</strong> — An aggressive, reduced-scope
+              timeline that prioritizes the most impactful screens and features to hit a 2026 launch
+              date. Design, frontend, and backend hours are scaled down to focus on core
+              deliverables.
+            </p>
+            <p>
+              <strong className="text-deep">Launch in 2027</strong> — The full-scope build covering
+              every screen and feature across all modules. This timeline allows for a comprehensive
+              implementation with no compromises on functionality or polish.
+            </p>
+          </div>
+          <ScenarioComparison scenarios={scenarios} />
+        </div>
+      </CollapsibleSection>
+
+      <CollapsibleSection title="Sitemap">
+        <div className="space-y-4">
+          <div className="flex flex-wrap items-center gap-3">
+            <FilterButtonGroup
+              options={MODULE_OPTIONS}
+              activeId={activeModuleId}
+              onChange={setActiveModuleId}
+            />
+            <button
+              onClick={handleDownloadSitemap}
+              className="px-4 py-2 rounded-md text-sm font-semibold border border-tan bg-white text-deep hover:bg-sand-light transition-colors"
+            >
+              Download text version
+            </button>
+          </div>
+          <Sitemap
+            sitemapRoot={sitemapRoot}
+            onClickPage={handleClickPage}
+            activeModuleId={activeModuleId}
+          />
+        </div>
+      </CollapsibleSection>
+
+      <CollapsibleSection title="Screens & Annotations">
+        <ScreensBreakdown />
+      </CollapsibleSection>
+
+      <CollapsibleSection title="Project Timeline">
+        <Timeline scenarioHours={activeScenario.hours} />
+      </CollapsibleSection>
+
+      <CollapsibleSection title="Project Estimate">
+        <div className="space-y-4">
+          <div className="flex flex-wrap items-center gap-3">
+            <FilterButtonGroup
+              options={scenarios}
+              activeId={activeScenarioId}
+              onChange={setActiveScenarioId}
+            />
+            <FilterButtonGroup
+              options={MODULE_OPTIONS}
+              activeId={activeModuleId}
+              onChange={setActiveModuleId}
+            />
+          </div>
+          <ScenarioEstimate
+            scenarios={scenarios}
+            activeId={activeScenarioId}
+          />
+        </div>
+      </CollapsibleSection>
+    </div>
+  )
+}

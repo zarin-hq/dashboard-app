@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg:          #FCF3EB;
+  --bg-card:     #FFFAF5;
+  --bg-raised:   #F2E6DB;
+  --border:      #E4D5C3;
+  --border-med:  #BCAB96;
+  --text:        #264A50;
+  --text-muted:  #7C8E8E;
+  --accent:      #264A50;
+  --accent-2:    #FFB584;
+  --accent-teal: #264A50;
+  --accent-amber:#FFB584;
+  --accent-rose: #dc2626;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Instrument Sans', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: 'Instrument Sans', Arial, sans-serif;
+  font-weight: 700;
+}
+
+.cursor-crosshair {
+  cursor: crosshair;
+}
+
+/* Range input styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: none;
+  cursor: pointer;
+}
+
+/* Number input spinners */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 0.5;
+}
