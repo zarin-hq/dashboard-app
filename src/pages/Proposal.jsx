@@ -132,7 +132,7 @@ export default function Proposal() {
 
       <CollapsibleSection title="Sitemap">
         <div className="space-y-4">
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center justify-between gap-3">
             <FilterButtonGroup
               options={MODULE_OPTIONS}
               activeId={activeModuleId}
