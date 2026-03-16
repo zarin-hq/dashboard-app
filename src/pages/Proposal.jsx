@@ -108,18 +108,23 @@ export default function Proposal() {
     <div className="space-y-10">
       <CollapsibleSection title="Scenarios">
         <div className="space-y-4">
-          <div className="space-y-3 text-sm text-deep-muted">
-            <p>
-              <strong className="text-deep">Launch in 2026</strong> — An aggressive, reduced-scope
-              timeline that prioritizes the most impactful screens and features to hit a 2026 launch
-              date. Design, frontend, and backend hours are scaled down to focus on core
-              deliverables.
-            </p>
-            <p>
-              <strong className="text-deep">Launch in 2027</strong> — The full-scope build covering
-              every screen and feature across all modules. This timeline allows for a comprehensive
-              implementation with no compromises on functionality or polish.
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-deep">
+            <div className="p-4 rounded-xl border border-tan bg-sand-light">
+              <p className="font-bold mb-1">Launch in 2026</p>
+              <p>
+                An aggressive, reduced-scope timeline that prioritizes the most impactful screens
+                and features to hit a 2026 launch date. Design, frontend, and backend hours are
+                scaled down to focus on core deliverables.
+              </p>
+            </div>
+            <div className="p-4 rounded-xl border border-tan bg-sand-light">
+              <p className="font-bold mb-1">Launch in 2027</p>
+              <p>
+                The full-scope build covering every screen and feature across all modules. This
+                timeline allows for a comprehensive implementation with no compromises on
+                functionality or polish.
+              </p>
+            </div>
           </div>
           <ScenarioComparison scenarios={scenarios} />
         </div>
@@ -153,7 +158,14 @@ export default function Proposal() {
       </CollapsibleSection>
 
       <CollapsibleSection title="Project Timeline">
-        <Timeline scenarioHours={activeScenario.hours} />
+        <div className="space-y-4">
+          <FilterButtonGroup
+            options={scenarios}
+            activeId={activeScenarioId}
+            onChange={setActiveScenarioId}
+          />
+          <Timeline scenarioHours={activeScenario.hours} />
+        </div>
       </CollapsibleSection>
 
       <CollapsibleSection title="Project Estimate">
