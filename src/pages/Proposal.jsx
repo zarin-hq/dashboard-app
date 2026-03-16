@@ -186,7 +186,14 @@ export default function Proposal() {
       </CollapsibleSection>
 
       <CollapsibleSection title="Screens & Annotations">
-        <ScreensBreakdown />
+        <div className="space-y-4">
+          <ScreensBreakdown />
+          <div className="flex justify-center">
+            <button className="px-5 py-2 rounded-md text-sm font-semibold border border-tan bg-white text-deep hover:bg-sand-light transition-colors">
+              See all 1,041
+            </button>
+          </div>
+        </div>
       </CollapsibleSection>
 
       <CollapsibleSection title="Project Timeline">
