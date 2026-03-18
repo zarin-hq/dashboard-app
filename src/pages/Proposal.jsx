@@ -198,6 +198,7 @@ export default function Proposal() {
 
       <CollapsibleSection title="Approach">
         <div className="columns-1 md:columns-2 lg:columns-3 gap-6 text-sm text-deep leading-relaxed">
+          <h3 className="text-base font-bold text-deep mb-2 break-after-avoid">Strategy & Discovery</h3>
           <p className="mb-4">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
           </p>
@@ -207,6 +208,7 @@ export default function Proposal() {
           <p className="mb-4">
             Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.
           </p>
+          <h3 className="text-base font-bold text-deep mb-2 break-after-avoid">Design & Development</h3>
           <p className="mb-4">
             At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
           </p>

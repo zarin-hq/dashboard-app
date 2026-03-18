@@ -1,4 +1,4 @@
-import { NavLink, Outlet, useLocation } from 'react-router-dom'
+import { NavLink, Outlet } from 'react-router-dom'
 import { useProject } from '../hooks/useProject'
 import { clearAllScreenshotImages } from '../lib/db'
 
@@ -9,8 +9,7 @@ const navLinks = [
 ]
 
 export default function Layout() {
-  const { state, totalHours, dispatch } = useProject()
-  const location = useLocation()
+  const { state, dispatch } = useProject()
 
   const handleClearProject = () => {
     if (!window.confirm('Clear all project data? This cannot be undone.')) return
@@ -49,11 +48,6 @@ export default function Layout() {
             </nav>
           </div>
           <div className="flex items-center gap-3">
-            {totalHours > 0 && location.pathname !== '/proposal' && (
-              <div className="px-3 py-1.5 rounded-lg bg-white/15 text-sky text-sm font-semibold">
-                {totalHours}h total
-              </div>
-            )}
             <button
               onClick={handleClearProject}
               className="px-3 py-1.5 rounded-lg text-sm font-medium text-white/60 hover:text-red-300 hover:bg-red-500/15 transition-colors"
