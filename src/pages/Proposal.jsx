@@ -14,6 +14,7 @@ import RippleWaves from '../components/RippleWaves'
 import ParticleLogos from '../components/ParticleLogos'
 import InteractiveWavesGraphic from '../components/InteractiveWavesGraphic'
 import PhonePopIn from '../components/PhonePopIn'
+import DiscoveryDashboard from '../components/proposal/DiscoveryDashboard'
 import { useProposalTab } from '../contexts/ProposalTabContext'
 
 const MODULE_OPTIONS = [{ id: 'all', name: 'All' }, ...MODULE_CATEGORIES]
@@ -230,8 +231,24 @@ export default function Proposal() {
           </div>
         )}
 
-        {/* Estimate */}
+        {/* Discovery */}
         {activeTab === 2 && (
+          <div className="space-y-8">
+            <div className="-mx-6 -mt-6 bg-deep h-[342px] flex">
+              <img src="/assets/hero-scope.jpg" alt="" className="h-full w-auto object-cover object-center" />
+              <div className="flex items-center ml-[80px]">
+                <div>
+                  <p className="preheading text-orange mb-4">Discovery</p>
+                  <h1 className="text-white">What We Found</h1>
+                </div>
+              </div>
+            </div>
+            <DiscoveryDashboard />
+          </div>
+        )}
+
+        {/* Estimate */}
+        {activeTab === 3 && (
           <div className="space-y-8">
             <div className="-mx-6 -mt-6 bg-deep h-[342px] flex">
               <img src="/assets/hero-estimate.jpg" alt="" className="h-full w-auto object-cover object-center" />
@@ -259,7 +276,7 @@ export default function Proposal() {
         )}
 
         {/* Scenarios (comparison + timeline) */}
-        {activeTab === 3 && (
+        {activeTab === 4 && (
           <div className="space-y-8">
             <div className="-mx-6 -mt-6 bg-deep h-[342px] flex">
               <img src="/assets/hero-scenarios.jpg" alt="" className="h-full w-auto object-cover object-center" />
@@ -320,19 +337,19 @@ export default function Proposal() {
           <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
             <path d="M10 3L5 8l5 5V3z" />
           </svg>
-          {activeTab > 0 ? ['Intro', 'Scope', 'Estimate', 'Scenarios'][activeTab - 1] : 'Previous'}
+          {activeTab > 0 ? ['Intro', 'Scope', 'Discovery', 'Estimate', 'Scenarios'][activeTab - 1] : 'Previous'}
         </button>
 
         <button
           onClick={() => goTo(activeTab + 1)}
-          disabled={activeTab === 3}
+          disabled={activeTab === 4}
           className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold transition-colors ${
-            activeTab === 3
+            activeTab === 4
               ? 'text-tan cursor-not-allowed'
               : 'text-deep hover:text-deep-dark'
           }`}
         >
-          {activeTab < 3 ? ['Intro', 'Scope', 'Estimate', 'Scenarios'][activeTab + 1] : 'Next'}
+          {activeTab < 4 ? ['Intro', 'Scope', 'Discovery', 'Estimate', 'Scenarios'][activeTab + 1] : 'Next'}
           <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
             <path d="M6 3l5 5-5 5V3z" />
           </svg>

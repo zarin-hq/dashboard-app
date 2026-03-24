@@ -5,6 +5,7 @@ const ProposalTabContext = createContext()
 export const PROPOSAL_TABS = [
   { id: 'intro', label: 'Intro' },
   { id: 'scope', label: 'Scope' },
+  { id: 'discovery', label: 'Discovery' },
   { id: 'estimate', label: 'Estimate' },
   { id: 'scenarios', label: 'Scenarios' },
 ]
