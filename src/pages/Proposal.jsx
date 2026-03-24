@@ -12,6 +12,8 @@ import PopIn from '../components/PopIn'
 import GradientText from '../components/GradientText'
 import RippleWaves from '../components/RippleWaves'
 import ParticleLogos from '../components/ParticleLogos'
+import InteractiveWavesGraphic from '../components/InteractiveWavesGraphic'
+import PhonePopIn from '../components/PhonePopIn'
 import { useProposalTab } from '../contexts/ProposalTabContext'
 
 const MODULE_OPTIONS = [{ id: 'all', name: 'All' }, ...MODULE_CATEGORIES]
@@ -130,14 +132,21 @@ export default function Proposal() {
               <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-24" style={{ minHeight: '480px' }}>
                 <p className="preheading mb-4" style={{ color: '#FFB584' }}>Website Rebuild Proposal</p>
                 <h1 className="jumbo text-white mb-6">Visit Salt Lake <GradientText text="Rebuild" /></h1>
-                <button onClick={() => goTo(1)} className="btn-draw-border !text-white !border-white hover:!text-sky" style={{ '--draw-color': '#84D7DC' }}>
-                  Explore the Proposal
+                <button onClick={() => goTo(1)} className="btn-fill-up" style={{ '--fill-bg': '#84D7DC', '--fill-hover': '#FFB584', '--fill-text': '#264A50', '--fill-hover-text': '#264A50' }}>
+                  <span>Explore the Proposal</span>
                 </button>
               </div>
             </div>
 
             <div className="max-w-[600px] mx-auto text-sm text-deep leading-relaxed mt-10">
-              <h3 className="mb-2">Strategy & Discovery</h3>
+              <h3 className="mb-2">Approach</h3>
+              <p className="mb-4">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </p>
+              <p className="mb-4">
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+              <h3 className="mb-2 mt-8">Strategy & Discovery</h3>
               <p className="mb-4">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
               </p>
@@ -147,7 +156,17 @@ export default function Proposal() {
               <p className="mb-4">
                 Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.
               </p>
-              <h3 className="mb-2 mt-8">Design & Development</h3>
+            </div>
+
+            <div className="relative overflow-hidden -mx-6" style={{ height: 680 }}>
+              <div className="absolute overflow-hidden" style={{ top: 40, bottom: 40, left: 0, right: 0 }}>
+                <InteractiveWavesGraphic />
+              </div>
+              <PhonePopIn />
+            </div>
+
+            <div className="max-w-[600px] mx-auto text-sm text-deep leading-relaxed mt-10">
+              <h3 className="mb-2">Design & Development</h3>
               <p className="mb-4">
                 At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
               </p>
@@ -169,7 +188,7 @@ export default function Proposal() {
         {activeTab === 1 && (
           <div className="space-y-8">
             <div className="-mx-6 -mt-6 bg-deep h-[342px] flex">
-              <img src="/assets/blue-photo.png" alt="" className="h-full w-auto object-cover object-center" />
+              <img src="/assets/hero-scope.jpg" alt="" className="h-full w-auto object-cover object-center" />
               <div className="flex items-center ml-[80px]">
                 <div>
                   <p className="preheading text-orange mb-4">Scope</p>
@@ -211,11 +230,39 @@ export default function Proposal() {
           </div>
         )}
 
-        {/* Scenarios (comparison + timeline) */}
+        {/* Estimate */}
         {activeTab === 2 && (
           <div className="space-y-8">
             <div className="-mx-6 -mt-6 bg-deep h-[342px] flex">
-              <img src="/assets/blue-photo.png" alt="" className="h-full w-auto object-cover object-center" />
+              <img src="/assets/hero-estimate.jpg" alt="" className="h-full w-auto object-cover object-center" />
+              <div className="flex items-center ml-[80px]">
+                <div>
+                  <p className="preheading text-orange mb-4">Estimate</p>
+                  <h1 className="text-white">Project Investment</h1>
+                </div>
+              </div>
+            </div>
+            <div className="space-y-4">
+              <div className="flex flex-wrap items-center gap-3">
+                <FilterButtonGroup
+                  options={MODULE_OPTIONS}
+                  activeId={activeModuleId}
+                  onChange={setActiveModuleId}
+                />
+              </div>
+              <ScenarioEstimate
+                scenarios={scenarios}
+                activeId={activeScenarioId}
+              />
+            </div>
+          </div>
+        )}
+
+        {/* Scenarios (comparison + timeline) */}
+        {activeTab === 3 && (
+          <div className="space-y-8">
+            <div className="-mx-6 -mt-6 bg-deep h-[342px] flex">
+              <img src="/assets/hero-scenarios.jpg" alt="" className="h-full w-auto object-cover object-center" />
               <div className="flex items-center ml-[80px]">
                 <div>
                   <p className="preheading text-orange mb-4">Scenarios</p>
@@ -257,40 +304,6 @@ export default function Proposal() {
             </div>
           </div>
         )}
-
-        {/* Estimate */}
-        {activeTab === 3 && (
-          <div className="space-y-8">
-            <div className="-mx-6 -mt-6 bg-deep h-[342px] flex">
-              <img src="/assets/blue-photo.png" alt="" className="h-full w-auto object-cover object-center" />
-              <div className="flex items-center ml-[80px]">
-                <div>
-                  <p className="preheading text-orange mb-4">Estimate</p>
-                  <h1 className="text-white">Project Investment</h1>
-                </div>
-              </div>
-            </div>
-            <div className="space-y-4">
-            <p className="preheading mb-3">Investment</p>
-            <div className="flex flex-wrap items-center gap-3">
-              <FilterButtonGroup
-                options={scenarios}
-                activeId={activeScenarioId}
-                onChange={setActiveScenarioId}
-              />
-              <FilterButtonGroup
-                options={MODULE_OPTIONS}
-                activeId={activeModuleId}
-                onChange={setActiveModuleId}
-              />
-            </div>
-            <ScenarioEstimate
-              scenarios={scenarios}
-              activeId={activeScenarioId}
-            />
-            </div>
-          </div>
-        )}
       </div>
 
       {/* Previous / Next navigation */}
@@ -307,7 +320,7 @@ export default function Proposal() {
           <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
             <path d="M10 3L5 8l5 5V3z" />
           </svg>
-          {activeTab > 0 ? ['Intro', 'Scope', 'Scenarios', 'Estimate'][activeTab - 1] : 'Previous'}
+          {activeTab > 0 ? ['Intro', 'Scope', 'Estimate', 'Scenarios'][activeTab - 1] : 'Previous'}
         </button>
 
         <button
@@ -319,7 +332,7 @@ export default function Proposal() {
               : 'text-deep hover:text-deep-dark'
           }`}
         >
-          {activeTab < 3 ? ['Intro', 'Scope', 'Scenarios', 'Estimate'][activeTab + 1] : 'Next'}
+          {activeTab < 3 ? ['Intro', 'Scope', 'Estimate', 'Scenarios'][activeTab + 1] : 'Next'}
           <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
             <path d="M6 3l5 5-5 5V3z" />
           </svg>
