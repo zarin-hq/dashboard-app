@@ -339,6 +339,252 @@ export default function DiscoveryDashboardDaniel() {
         </div>
       </CollapsibleSection>
 
+      {/* Interactive Features */}
+      <CollapsibleSection title="Interactive Features" count="15 features documented">
+        <div className="space-y-1">
+          {[
+            { name: 'Faceted Listing Filtering', complexity: 'High', scope: 'Restaurants, Places To Stay, Things To Do', detail: 'Keyword + type + location checkboxes with live counts, sort, grid/list toggle' },
+            { name: 'Event Date & Category Filtering', complexity: 'High', scope: 'Events page', detail: 'Quick date buttons (Today/Week/Weekend/Month), category + audience + location checkboxes' },
+            { name: 'Listing Detail Tabs', complexity: 'High', scope: '4,629 listing pages', detail: '5 tabs: Overview, Features, Reviews, Facilities, Related Stories + MAP button' },
+            { name: 'Trip Planner / Trip Builder', complexity: 'Medium', scope: 'Global', detail: '3 JS files, localStorage persistence, anonymous usage, counter widget' },
+            { name: 'Compare Tool', complexity: 'Medium', scope: '/compare/ + listing cards', detail: 'Side-by-side listing comparison, click-to-compare on cards' },
+            { name: 'Booking Widget (RootRez)', complexity: 'Medium', scope: '/places-to-stay/', detail: 'Check-in/out date pickers, guest count, submits to lodging.visitsaltlake.com' },
+            { name: 'Persistent Cart (Connect Pass)', complexity: 'High', scope: 'Global', detail: 'Cross-page e-commerce cart for experience passes, external checkout' },
+            { name: 'Site Search', complexity: 'Medium', scope: 'Global header', detail: '8 content type facets with counts, autocomplete, 10 results/page' },
+            { name: 'Interactive Maps (Outdooractive)', complexity: 'Medium', scope: 'Listing/event detail', detail: 'Leaflet.js 1.9.4, enlarge map, 3D flyover on trail listings' },
+            { name: 'Photo Gallery / Lightbox', complexity: 'Low', scope: 'Detail pages', detail: 'GLightbox carousel with "X OF Y" counter, prev/next navigation' },
+            { name: 'Quick View Overlay', complexity: 'Low-Med', scope: 'Listing browse', detail: 'Preview overlay without navigating to full detail page' },
+            { name: 'CrowdRiff UGC Gallery', complexity: 'Medium', scope: 'Homepage, key pages', detail: 'Social photo grid pulling Instagram content' },
+            { name: 'Content Tabs', complexity: 'Low', scope: 'Things To Do', detail: 'Client-side tab switching: Attractions, Tours, Outdoor Rec, Nightlife' },
+            { name: 'Social Sharing', complexity: 'Low', scope: 'All content pages', detail: 'Expandable share panel: Facebook, X, Email, LinkedIn, Reddit' },
+            { name: 'Weather Widget', complexity: 'Low', scope: 'Global header', detail: 'Real-time weather dropdown from Simpleview API' },
+          ].map((f) => (
+            <div key={f.name} className="flex items-start gap-3 py-2 border-b border-tan/50 last:border-0">
+              <div className="w-52 shrink-0"><span className="font-medium">{f.name}</span></div>
+              <div className="w-20 shrink-0"><span className={`text-xs font-medium ${f.complexity === 'High' ? 'text-red-600' : f.complexity === 'Medium' ? 'text-amber-600' : 'text-blue-600'}`}>{f.complexity}</span></div>
+              <div className="flex-1 text-deep-muted">{f.detail}</div>
+            </div>
+          ))}
+        </div>
+      </CollapsibleSection>
+
+      {/* SEO Health */}
+      <CollapsibleSection title="SEO Health" count="8,818 URLs crawled">
+        <div className="space-y-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {[
+              { label: 'Internal 404s', value: '5', status: 'good', detail: 'Excellent — only 5 broken internal links' },
+              { label: 'Redirect Chains', value: '0', status: 'good', detail: 'Clean — no chained redirects' },
+              { label: 'Orphan Pages', value: '0', status: 'good', detail: 'All pages reachable via internal links' },
+              { label: 'Response Time', value: '0.455s', status: 'good', detail: 'Median server response (fast)' },
+            ].map((item) => (
+              <div key={item.label} className="p-3 border border-tan/50 bg-sand-light">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-xs font-semibold text-deep">{item.label}</span>
+                  <span className="inline-block px-2 py-0.5 text-xs font-semibold rounded bg-emerald-100 text-emerald-700">{item.status}</span>
+                </div>
+                <p className="text-lg font-bold text-deep">{item.value}</p>
+                <p className="text-xs text-deep-muted">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            {[
+              { label: 'Missing Meta Descriptions', value: '510 (26%)', status: 'warning', detail: 'Many CRM pages rely on auto-generated snippets' },
+              { label: 'Missing H1 Tags', value: '948 (48%)', status: 'warning', detail: 'CRM pages render titles in non-H1 elements' },
+              { label: 'Missing Page Titles', value: '159 (8%)', status: 'warning', detail: '57 duplicate titles (mostly blog archive pagination)' },
+            ].map((item) => (
+              <div key={item.label} className="p-3 border border-tan/50 bg-sand-light">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-xs font-semibold text-deep">{item.label}</span>
+                  <span className="inline-block px-2 py-0.5 text-xs font-semibold rounded bg-amber-100 text-amber-700">{item.status}</span>
+                </div>
+                <p className="text-lg font-bold text-deep">{item.value}</p>
+                <p className="text-xs text-deep-muted">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-xs text-deep-muted space-y-1">
+            <p><strong className="text-deep">Structured Data:</strong> JSON-LD on listings (LocalBusiness + activity type), events (ExhibitionEvent), blog (BlogPosting). Missing on homepage.</p>
+            <p><strong className="text-deep">Open Graph:</strong> All pages have og:title, og:description, og:image. No og:locale:alternate for translations.</p>
+            <p><strong className="text-deep">Canonicals:</strong> Self-referencing on all pages. No conflicts detected.</p>
+            <p><strong className="text-deep">RSS Feeds:</strong> None found. Potential improvement for blog/events.</p>
+          </div>
+        </div>
+      </CollapsibleSection>
+
+      {/* Navigation & IA */}
+      <CollapsibleSection title="Navigation & Information Architecture" count="6 components, 8 contexts">
+        <div className="space-y-4">
+          <div className="space-y-1">
+            {[
+              { name: 'Three-Column Mega Menu', scope: 'Desktop', detail: '7 primary items: Things To Do, Skiing, Events, Restaurants, Places To Stay, Plan Your Visit, Neighborhoods' },
+              { name: 'Secondary Navigation', scope: 'Desktop', detail: '5 B2B links: Meetings, Travel Trade, Sports, Film, Blog' },
+              { name: 'Mobile Hamburger Menu', scope: 'Mobile (<769px)', detail: 'Full-screen accordion with "open submenu" buttons + "EXPLORE SALT LAKE" bottom CTA' },
+              { name: 'Footer Navigation', scope: 'Global', detail: '7 links including Shopify external store. Dynamic events feed, blog feed, sponsor logos.' },
+              { name: 'Industry Section Navs', scope: 'B2B pages', detail: '6 unique navs: Meetings (5 items), Travel Trade (6), Sports (7), Film (3), Speak SL (5), Members (4)' },
+              { name: 'Breadcrumbs', scope: 'All interior pages', detail: 'Linked hierarchy. No BreadcrumbList schema (improvement opportunity).' },
+            ].map((item) => (
+              <div key={item.name} className="flex items-start gap-3 py-2 border-b border-tan/50 last:border-0">
+                <div className="w-52 shrink-0"><span className="font-medium">{item.name}</span></div>
+                <div className="w-28 shrink-0 text-xs text-deep-muted">{item.scope}</div>
+                <div className="flex-1 text-deep-muted">{item.detail}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </CollapsibleSection>
+
+      {/* B2B / Industry Sections */}
+      <CollapsibleSection title="B2B / Industry Sections" count="5 active sections">
+        <div className="space-y-1">
+          {[
+            { name: 'Meetings', pages: '46+', layout: 'Dedicated template', detail: '~45 pages deep hierarchy, convention calendar (CRM widget), RFP form (80+ fields), 5 hotel districts, venue specs' },
+            { name: 'Travel Trade', pages: '15', layout: 'Secondary Nav', detail: 'FAM maps, partnerships, partner directory. A/B testing + personalization active.' },
+            { name: 'Sports', pages: '20', layout: 'Dedicated template', detail: 'Own "Sports Salt Lake" brand identity. Featured upcoming events from CRM.' },
+            { name: 'Film', pages: '6', layout: 'Secondary Nav', detail: '"Film Ready Utah" badge. Filming location + production vendor signup forms.' },
+            { name: 'Speak Salt Lake', pages: '6', layout: 'Secondary Nav', detail: 'Speakers bureau — Olympic Athletes + Business Leaders categories with booking.' },
+          ].map((s) => (
+            <div key={s.name} className="flex items-start gap-3 py-2 border-b border-tan/50 last:border-0">
+              <div className="w-36 shrink-0"><span className="font-medium">{s.name}</span></div>
+              <div className="w-16 shrink-0 text-xs text-deep-muted">{s.pages} pages</div>
+              <div className="w-36 shrink-0 text-xs text-deep-muted">{s.layout}</div>
+              <div className="flex-1 text-deep-muted">{s.detail}</div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-3 text-xs text-deep-muted">
+          <p><strong className="text-deep">Convention Microsites:</strong> 79 templated welcome pages ("Salt Lake Welcomes [Convention]") + Influencer page with CRM Form Builder.</p>
+        </div>
+      </CollapsibleSection>
+
+      {/* Seasonal & Dynamic Content */}
+      <CollapsibleSection title="Seasonal & Dynamic Content" count="3 mechanisms">
+        <div className="space-y-3">
+          <div className="p-3 border border-tan/50 bg-sand-light">
+            <p className="font-semibold text-deep mb-1">Seasonal Content Rotation</p>
+            <p className="text-xs text-deep-muted">Homepage content changes significantly across seasons (verified via Wayback Machine): Winter → ski passes, aprés ski, ice skating. Summer → patio dining, wildflowers, family activities. Spring → cherry blossoms, spring skiing, festivals. Hero carousel, featured blog posts, and promotional offers all rotate seasonally via draft scheduling.</p>
+          </div>
+          <div className="p-3 border border-tan/50 bg-sand-light">
+            <p className="font-semibold text-deep mb-1">Content Personalization (7 Personas)</p>
+            <p className="text-xs text-deep-muted">Dynamic Content system with geo-targeting (country, region, metro, city). Personas: Craft Beverages, Family Fun, LGBTQ, Leisure Travel, Outdoor Recreation, Restaurants & Bars, Winter Activities. Applied to: hero slides, vertical videos, blog posts, nav items, page builder panels.</p>
+          </div>
+          <div className="p-3 border border-tan/50 bg-sand-light">
+            <p className="font-semibold text-deep mb-1">A/B Testing</p>
+            <p className="text-xs text-deep-muted">Active on homepage (Original/Variant panels) and Travel Trade section. VWO platform (account 967565) + Simpleview built-in A/B panels. GTM tracking via form "variation" field.</p>
+          </div>
+        </div>
+      </CollapsibleSection>
+
+      {/* Forms & Lead Capture */}
+      <CollapsibleSection title="Forms & Lead Capture" count="6 CRM forms">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left">
+            <thead><tr className="border-b border-tan">
+              <th className="py-2 pr-4 text-xs font-semibold text-deep-muted uppercase">Form</th>
+              <th className="py-2 pr-4 text-xs font-semibold text-deep-muted uppercase">ID</th>
+              <th className="py-2 pr-4 text-xs font-semibold text-deep-muted uppercase">Page</th>
+              <th className="py-2 text-xs font-semibold text-deep-muted uppercase">Key Fields</th>
+            </tr></thead>
+            <tbody>
+              {[
+                { form: 'Contact', id: 'frm_18', page: '/contact/', fields: 'Full address + phone + company + comments (most comprehensive)' },
+                { form: 'Newsletter Subscribe', id: 'frm_46', page: '/plan-your-visit/subscribe/', fields: 'Email + name + zip + country + email opt-in + custom field (udf_3845)' },
+                { form: 'Meeting Planner Guide', id: 'frm_54', page: '/meetings/contact/', fields: 'Same as subscribe — triggers physical guide mail-out' },
+                { form: 'Meeting Newsletter', id: 'frm_54', page: '/meetings/contact/', fields: 'Same form ID, different CRM groupid for segmentation' },
+                { form: 'Influencer Application', id: 'CRM widget', page: '/influencer/', fields: 'CRM Form Builder widget on microsite page' },
+                { form: 'RFP Submission', id: 'CRM RFP', page: '/rfp/', fields: '80+ fields — contact, meeting details, 14-day room block grid, file upload' },
+              ].map((f) => (
+                <tr key={f.form + f.page} className="border-b border-tan/50">
+                  <td className="py-2 pr-4 font-medium">{f.form}</td>
+                  <td className="py-2 pr-4 font-mono text-xs text-deep-muted">{f.id}</td>
+                  <td className="py-2 pr-4 font-mono text-xs text-deep-muted">{f.page}</td>
+                  <td className="py-2 text-deep-muted text-xs">{f.fields}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="mt-3 text-xs text-deep-muted">
+          <p>All forms powered by Simpleview CRM Form Builder. Google reCAPTCHA + honeypot (youcompleteme_sv) spam protection on all forms. CRM groupid field segments contacts into different lists.</p>
+        </div>
+      </CollapsibleSection>
+
+      {/* Responsive & Mobile */}
+      <CollapsibleSection title="Responsive & Mobile" count="15+ breakpoints">
+        <div className="space-y-3">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
+            {[
+              { bp: '375px', label: 'Mobile', desc: 'Single column, hamburger menu' },
+              { bp: '575px', label: 'Large Phone', desc: 'Cards shift to 2 columns' },
+              { bp: '769px', label: 'Tablet', desc: 'Major shift — 2-column layouts' },
+              { bp: '992px', label: 'Desktop', desc: 'Full nav, 3-4 column grids' },
+              { bp: '1440px', label: 'Large Desktop', desc: 'Max content width, centered' },
+            ].map((item) => (
+              <div key={item.bp} className="p-2 border border-tan/50 bg-sand-light text-center">
+                <p className="text-sm font-bold text-deep">{item.bp}</p>
+                <p className="text-xs font-semibold text-deep">{item.label}</p>
+                <p className="text-xs text-deep-muted mt-1">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-xs text-deep-muted space-y-1">
+            <p><strong className="text-deep">Mobile Features:</strong> Click-to-call phone links, touch swipe carousels (Glide.js), "EXPLORE SALT LAKE" mobile-only CTA, collapsible filter panels</p>
+            <p><strong className="text-deep">No Art Direction:</strong> Same image crops at all viewports (srcset for size only). Improvement opportunity with &lt;picture&gt; element.</p>
+            <p><strong className="text-deep">Device Split:</strong> 61% desktop, 38% mobile, &lt;1% tablet</p>
+          </div>
+        </div>
+      </CollapsibleSection>
+
+      {/* Tech Stack */}
+      <CollapsibleSection title="Current Tech Stack" count="to be replaced">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <p className="font-semibold mb-2">Core Platform</p>
+            <div className="space-y-1 text-xs text-deep-muted">
+              <p>Simpleview CMS (proprietary tourism platform)</p>
+              <p>Simpleview CRM (listings, events, contacts)</p>
+              <p>Simpleview CDN / Cloudinary (image hosting + transforms)</p>
+              <p>Server-side rendered HTML (not SPA)</p>
+              <p>Goatee — Simpleview's custom templating engine</p>
+            </div>
+          </div>
+          <div>
+            <p className="font-semibold mb-2">Frontend Libraries</p>
+            <div className="space-y-1 text-xs text-deep-muted">
+              <p>jQuery 2.2.4 (outdated — needs replacement)</p>
+              <p>RequireJS (AMD module loader)</p>
+              <p>Vue.js (internal, selective components)</p>
+              <p>Glide.js 3.4.1 (carousels)</p>
+              <p>Plyr 3.x (video player)</p>
+              <p>GLightbox (lightbox/modal)</p>
+              <p>Leaflet.js 1.9.4 (maps via Outdooractive)</p>
+              <p>Font Awesome 5.14.0, PT Sans Narrow (Google Fonts)</p>
+            </div>
+          </div>
+        </div>
+      </CollapsibleSection>
+
+      {/* Data Quality */}
+      <CollapsibleSection title="Data Quality Observations" count="from CMS dashboard">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+          {[
+            { label: 'Listings Without Media', value: '3,723', severity: 'high' },
+            { label: 'Unpublished Articles', value: '1,030', severity: 'medium' },
+            { label: 'Unpublished Blog Posts', value: '1,229', severity: 'medium' },
+            { label: 'Unpublished Pages', value: '195', severity: 'low' },
+            { label: 'Events Without Images', value: '155', severity: 'low' },
+            { label: 'Broken External Links', value: '161', severity: 'low' },
+          ].map((item) => (
+            <div key={item.label} className="p-3 border border-tan/50 bg-sand-light">
+              <p className={`text-lg font-bold ${item.severity === 'high' ? 'text-red-600' : item.severity === 'medium' ? 'text-amber-600' : 'text-deep'}`}>{item.value}</p>
+              <p className="text-xs text-deep-muted">{item.label}</p>
+            </div>
+          ))}
+        </div>
+        <p className="text-xs text-deep-muted mt-3">3,723 listings without media is the most significant data quality issue — these listings will need placeholder handling or media sourcing during migration.</p>
+      </CollapsibleSection>
+
       {/* Assumptions & Risks */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <CollapsibleSection title="Assumptions" count={ASSUMPTIONS.reduce((s, a) => s + a.items.length, 0)}>
