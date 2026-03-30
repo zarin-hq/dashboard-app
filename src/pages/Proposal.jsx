@@ -217,20 +217,30 @@ export default function Proposal() {
             <div className="max-w-[600px] mx-auto text-sm text-deep leading-relaxed mt-10">
               <h3 className="mb-2">Approach</h3>
               <p className="mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                {"This isn't a typical website redesign. Visit Salt Lake's digital presence is built on a network of interconnected systems\u2014a CMS, a CRM, membership portals, event feeds, booking integrations, sales tools, and marketing automation\u2014totaling over a dozen third-party services. Many of these systems don't communicate with each other the way they should, creating friction for your team and gaps in the visitor experience."}
               </p>
               <p className="mb-4">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                {"Our approach is to understand the full picture before proposing a solution. We're not starting with wireframes or timelines\u2014we're starting with a comprehensive audit of every system, every integration, every workflow, and every piece of content that powers visitsaltlake.com today. Only after we've mapped the complete landscape will we present a honest estimate of what it takes to rebuild it."}
               </p>
               <h3 className="mb-2 mt-8">Strategy & Discovery</h3>
               <p className="mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                {"We've structured this engagement in two phases designed to build confidence at every step\u2014yours and ours."}
               </p>
               <p className="mb-4">
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                <strong>Phase 1</strong>{" is a high-level assessment of the current site. We've crawled all 7,692 public URLs, audited every page type, documented the navigation and content architecture, mapped third-party integrations, and identified where data flows in and out of the site. This work gives us roughly 80\u201390% confidence in the scope of the marketing website. Phase 1 is nearly complete\u2014the findings are presented in the Discovery section of this proposal."}
               </p>
               <p className="mb-4">
-                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.
+                <strong>Phase 2</strong>{" is where we go deep. This is a paid engagement\u2014typically 3\u20134 weeks\u2014where we conduct a thorough analysis of the systems behind the public site. That means full access to the CMS admin, the CRM, the membership portal, and the sales tools your team uses daily. We'll interview every person who touches these systems to understand their workflows, pain points, and what they can't afford to lose in a transition. Phase 2 covers:"}
+              </p>
+              <ul className="mb-4 ml-4 list-disc space-y-1">
+                <li>{"Full CRM audit\u2014listings, events, partner data, sales pipelines, and how data moves between the CRM and the public website"}</li>
+                <li>{"Content migration mapping\u2014field-by-field analysis of what needs to move, what can be archived, and what format the data is in"}</li>
+                <li>{"Integration depth assessment\u2014understanding exactly how each vendor connects and what it would take to replace or replicate each one"}</li>
+                <li>{"Admin workflow documentation\u2014screen recordings and interviews with staff to ensure the replacement system works for the ~20 people who use it daily"}</li>
+                <li>{"Detailed estimate with ranges\u2014grounded in real data, not assumptions"}</li>
+              </ul>
+              <p className="mb-4">
+                {"The goal of Phase 2 is 99% confidence. When we present the final scope and timeline, there should be no surprises for either side."}
               </p>
             </div>
 
@@ -244,13 +254,13 @@ export default function Proposal() {
             <div className="max-w-[600px] mx-auto text-sm text-deep leading-relaxed mt-10">
               <h3 className="mb-2">Design & Development</h3>
               <p className="mb-4">
-                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+                {"Our first priority is stability, not novelty. The rebuild will replicate every piece of existing functionality before we add anything new. Your team and your visitors should be able to do everything they do today\u2014search for events, browse listings, submit RFPs, manage memberships, update content\u2014without disruption on day one."}
               </p>
               <p className="mb-4">
-                Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
+                {"Once the foundation is solid, we layer on improvements: faster page loads, better search and filtering, a modern content editing experience, proper accessibility built into the code rather than bolted on as an overlay, and a unified system that replaces the patchwork of disconnected tools your team currently navigates. The architecture will be built to last\u2014clean, maintainable, and designed so you're never locked into a single vendor again."}
               </p>
               <p className="mb-4">
-                Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
+                {"We're targeting a phased delivery: an initial proof of concept that demonstrates the new system across key sections of the site, followed by a full build-out toward launch. This gives your team early visibility into how the new platform works and a chance to provide feedback before we're too deep to adjust course."}
               </p>
             </div>
 
@@ -303,7 +313,7 @@ export default function Proposal() {
                     <h2 className="text-deep">Our Approach</h2>
                   </div>
                   <p className="text-deep max-w-[430px] ml-auto">
-                    Lorem ipsum the larger the company, the more challenging it is to innovate and push projects through like a nimble startup can. We bring speed, ambition, and Swiss Army skillsets to supplement existing teams. We help you navigate changing markets by building better products.
+                    {"We've audited every page type, mapped every integration, and documented every data flow across visitsaltlake.com. Below is what we found\u2014the complete picture of what powers your site today, and the questions we need answered before we can give you a locked estimate."}
                   </p>
                 </div>
               </div>
