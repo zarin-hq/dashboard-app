@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # ─── Configuration ───────────────────────────────────────────────────────────
-BASE_URL="https://dashboard-app-neon-alpha.vercel.app"
+BASE_URL="https://visit-salt-lake-proposal-tool.vercel.app"
 PAGE="/proposal"
 SCREENSHOT_DIR="$(cd "$(dirname "$0")/../screenshots" && pwd)"
 AB="npx agent-browser"
